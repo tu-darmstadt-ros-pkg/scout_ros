@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="scout_mini">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0145261552504705 0.0231316650320557 0.00586280190939592"
+        rpy="0 0 0" />
+      <mass
+        value="28.2482230833985" />
+      <inertia
+        ixx="0.185196122711036"
+        ixy="4.30144213829512E-08"
+        ixz="5.81037523686401E-08"
+        iyy="0.364893736238929"
+        iyz="-0.000386720198091934"
+        izz="0.223868521722778" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/scout_mini_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/scout_mini_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="1_Link">
+    <inertial>
+      <origin
+        xyz="0.162297526351145 -0.159063056237197 -0.159999952657767"
+        rpy="0 0 0" />
+      <mass
+        value="44.3898489950015" />
+      <inertia
+        ixx="1.59765155047451"
+        ixy="0.419612950677861"
+        ixz="-0.000152096589599709"
+        iyy="2.16713796529156"
+        iyz="0.000235314175202741"
+        izz="1.32377192528866" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="1"
+    type="continuous">
+    <origin
+      xyz="0.14547 0.20835 -0.07424"
+      rpy="-1.5708 0.49911 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="1_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <link
+    name="2_Link">
+    <inertial>
+      <origin
+        xyz="0.162297526351148 0.159063056237198 -0.160000047342231"
+        rpy="0 0 0" />
+      <mass
+        value="44.3898489950015" />
+      <inertia
+        ixx="1.59765155047451"
+        ixy="-0.419612950677861"
+        ixz="0.000152096589599595"
+        iyy="2.16713796529156"
+        iyz="0.000235314175205147"
+        izz="1.32377192528866" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="2"
+    type="continuous">
+    <origin
+      xyz="-0.17453 0.20835 -0.07424"
+      rpy="1.5708 0.49911 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="2_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="3_Link">
+    <inertial>
+      <origin
+        xyz="-0.235088020493741 -0.0575697183039213 -0.16000004734223"
+        rpy="0 0 0" />
+      <mass
+        value="44.3898489950015" />
+      <inertia
+        ixx="1.59765155047451"
+        ixy="-0.419612950677861"
+        ixz="0.000152096589599567"
+        iyy="2.16713796529156"
+        iyz="0.00023531417520514"
+        izz="1.32377192528866" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="3"
+    type="continuous">
+    <origin
+      xyz="-0.17453 -0.24424 -0.07424"
+      rpy="1.5708 0.49911 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="3_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="4_Link">
+    <inertial>
+      <origin
+        xyz="0.235244832119832 -0.0585653794466942 -0.206994929144493"
+        rpy="0 0 0" />
+      <mass
+        value="44.3898489950015" />
+      <inertia
+        ixx="1.59765155047451"
+        ixy="0.419612950677861"
+        ixz="0.000152096589599696"
+        iyy="2.16713796529156"
+        iyz="-0.000235314175202766"
+        izz="1.32377192528866" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scout_description/meshes/4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="4"
+    type="fixed">
+    <origin
+      xyz="0.19247 -0.24486 -0.073441"
+      rpy="1.5708 -0.49911 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="4_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
