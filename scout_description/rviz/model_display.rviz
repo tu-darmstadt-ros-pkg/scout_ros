@@ -80,10 +80,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        inertial_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         rear_left_wheel_link:
           Alpha: 1
           Show Axes: false
@@ -111,8 +107,6 @@ Visualization Manager:
           Value: true
         front_right_wheel_link:
           Value: true
-        inertial_link:
-          Value: true
         rear_left_wheel_link:
           Value: true
         rear_right_wheel_link:
@@ -128,7 +122,37 @@ Visualization Manager:
             {}
           front_right_wheel_link:
             {}
-          inertial_link:
+          rear_left_wheel_link:
+            {}
+          rear_right_wheel_link:
+            {}
+      Update Interval: 0
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        base_link:
+          Value: true
+        front_left_wheel_link:
+          Value: true
+        front_right_wheel_link:
+          Value: true
+        rear_left_wheel_link:
+          Value: true
+        rear_right_wheel_link:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        base_link:
+          front_left_wheel_link:
+            {}
+          front_right_wheel_link:
             {}
           rear_left_wheel_link:
             {}
@@ -164,7 +188,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.667186975479126
+      Distance: 1.1036559343338013
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -179,10 +203,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.9947975277900696
+      Pitch: 0.29479730129241943
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.395816326141357
+      Yaw: 5.035815238952637
     Saved: ~
 Window Geometry:
   Displays:

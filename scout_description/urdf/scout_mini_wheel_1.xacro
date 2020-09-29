@@ -29,45 +29,52 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
     <xacro:macro name="scout_mini_wheel_1" params="wheel_prefix *joint_pose">
         <link name="${wheel_prefix}_wheel_link">
-            <inertial>
-                <mass value="44.3898489950015" />
-                <origin xyz="0 0 0" />
-                <inertia
-                       ixx="1.59765155047451"
-                       ixy="0.419612950677861"
-                       ixz="0.000152096589599696"
-                       iyy="2.16713796529156"
-                       iyz="-0.000235314175202766"
-                       izz="1.32377192528866" />
+            <!--<inertial>
+                <mass value="3" />
+                <origin
+                        xyz="0.162297526351145 -0.159063056237197 -0.159999952657767"
+                        rpy="0 0 0" />
+                        <inertia ixx="0.7171" ixy="0" ixz="0" iyy="0.1361" iyz="0" izz="0.7171" />
                    </inertial>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <geometry>
-                    <mesh filename="package://scout_description/meshes/1_Link.STL" />
+                    <mesh filename="package://scout_description/meshes/wheel.dae" />
+                </geometry>
+            </visual>-->
+            <inertial>
+                <mass value="15" />
+                <origin xyz="0 0 0" />
+                <inertia ixx="0.6171" ixy="0" ixz="0" iyy="0.6171" iyz="0" izz="0.1361" />
+                <!--<inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />-->
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0" />
+                <geometry>
+                    <mesh filename="package://scout_description/meshes/wheel.dae" />
+
                 </geometry>
             </visual>
-            <!--collision>
-                <origin xyz="0 0 0" rpy="${M_PI/2} 0 0" />
-                <geometry>
-                    <cylinder length="${wheel_length}" radius="${wheel_radius}" />
-                </geometry>
-            </collision-->
             <collision>
               <origin
-                xyz="0 0 0"
+                xyz="0 0 0.04"
                 rpy="0 0 0" />
               <geometry>
-                <mesh
-                  filename="package://scout_description/meshes/1_Link.STL" />
+                <!--<mesh
+                  filename="package://scout_description/meshes/wheel.dae" />-->
+                  <cylinder length="${wheel_length}" radius="${wheel_radius}" />
               </geometry>
             </collision>
         </link>
 
         <joint name="${wheel_prefix}_wheel" type="continuous">
+            <!--<origin
+                  xyz="0.14547 0.20835 -0.07424"
+                  rpy="0 1.57 0" />-->
             <parent link="base_link"/>
             <child link="${wheel_prefix}_wheel_link"/>
             <xacro:insert_block name="joint_pose"/>
-            <axis xyz="0 -1 0" rpy="0 0 0" />
+            <axis xyz="0 0 -1" rpy="0 0 0" />
         </joint>
     </xacro:macro>
 
