@@ -15,7 +15,7 @@ float64 angular_velocity
 # base state
 uint8 base_state
 uint8 control_mode
-uint16 fault_code
+uint8 fault_code
 float64 battery_voltage
 
 # motor state
@@ -25,3 +25,10 @@ ScoutMotorState[4] motor_states
 bool light_control_enabled
 ScoutLightState front_light_state
 ScoutLightState rear_light_state
+
+# driver state
+ScoutDriverState[4] driver_states
+
+#odometer state
+float64 left_odomter
+float64 right_odomter

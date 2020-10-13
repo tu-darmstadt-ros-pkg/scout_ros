@@ -13,7 +13,7 @@
 
 #include "scout_msgs/ScoutStatus.h"
 
-namespace wescore
+namespace westonrobot
 {
 ScoutROSMessenger::ScoutROSMessenger(ros::NodeHandle *nh) : scout_(nullptr), nh_(nh)
 {
@@ -156,9 +156,16 @@ void ScoutROSMessenger::PublishStateToROS()
 
     for (int i = 0; i < 4; ++i)
     {
-        status_msg.motor_states[i].current = state.motor_states[i].current;
-        status_msg.motor_states[i].rpm = state.motor_states[i].rpm;
-        status_msg.motor_states[i].temperature = state.motor_states[i].temperature;
+        status_msg.motor_states[i].current = state.motor_H_state[i].current;
+        status_msg.motor_states[i].rpm = state.motor_H_state[i].rpm;
+        status_msg.motor_states[i].temperature = state.motor_L_state[i].motor_temperature;
+        status_msg.motor_states[i].motor_pose = state.motor_H_state[i].motor_pose;
+    }
+    for (int i = 0; i < 4; ++i)
+    {
+        status_msg.driver_states[i].driver_state = state.motor_L_state[i].driver_state;
+        status_msg.driver_states[i].driver_voltage = state.motor_L_state[i].driver_voltage;
+        status_msg.driver_states[i].driver_temperature = state.motor_L_state[i].driver_temperature;
     }
 
     status_msg.light_control_enabled = state.light_control_enabled;
@@ -167,6 +174,8 @@ void ScoutROSMessenger::PublishStateToROS()
     status_msg.rear_light_state.mode = state.rear_light_state.mode;
     status_msg.rear_light_state.custom_value = state.front_light_state.custom_value;
 
+    status_msg.right_odomter=state.right_odomter;
+    status_msg.left_odomter=state.left_odomter;
     status_publisher_.publish(status_msg);
 
     // publish odometry and tf

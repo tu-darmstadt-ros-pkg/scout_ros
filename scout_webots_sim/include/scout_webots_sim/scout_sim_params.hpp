@@ -12,7 +12,7 @@
 
 #include <cstdint>
 
-namespace wescore
+namespace westonrobot
 {
 struct ScoutSimParams
 {

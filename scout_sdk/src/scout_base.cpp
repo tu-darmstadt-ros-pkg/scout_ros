@@ -308,11 +308,11 @@ void ScoutBase::DisableLightCmdControl()
 void ScoutBase::ParseCANFrame(can_frame *rx_frame)
 {
     // validate checksum, discard frame if fails
-    if (!rx_frame->data[7] == CalcScoutCANChecksum(rx_frame->can_id, rx_frame->data, rx_frame->can_dlc))
-    {
-        std::cerr << "ERROR: checksum mismatch, discard frame with id " << rx_frame->can_id << std::endl;
-        return;
-    }
+//    if (!rx_frame->data[7] == CalcScoutCANChecksum(rx_frame->can_id, rx_frame->data, rx_frame->can_dlc))
+//    {
+//        std::cerr << "ERROR: checksum mismatch, discard frame with id " << rx_frame->can_id << std::endl;
+//        return;
+//    }
 
     // otherwise, update robot state with new frame
     ScoutStatusMessage status_msg;
