@@ -84,7 +84,7 @@ Two scripts inside the "scout_bringup/scripts" folder are provided for easy setu
     $ git clone https://github.com/agilexrobotics/scout_ros.git	
     $ cd scout_ros && git checkout scout_v2 && cd ..
     $ git https://github.com/agilexrobotics/agx_sdk.git
-    $ cd scout_ros && git checkout scout_v2 && cd ..
+    $ cd agx_sdk && git checkout scout_v2 && cd ..
     $ cd ..
     $ catkin_make
     ```
