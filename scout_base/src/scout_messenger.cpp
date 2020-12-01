@@ -13,7 +13,7 @@
 
 #include "scout_msgs/ScoutStatus.h"
 
-namespace wescore
+namespace westonrobot
 {
 ScoutROSMessenger::ScoutROSMessenger(ros::NodeHandle *nh) : scout_(nullptr), nh_(nh)
 {

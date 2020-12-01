@@ -18,7 +18,7 @@
 
 #include "scout_base/scout_messenger.hpp"
 
-namespace wescore
+namespace westonrobot
 {
 class ScoutWebotsInterface
 {
