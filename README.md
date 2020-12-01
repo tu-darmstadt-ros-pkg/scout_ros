@@ -27,7 +27,7 @@ $ sudo usermod -a -G dialout $USER
 You need to re-login to get the change to take effect.
 
 ### Setup CAN-To-USB adapter 
- 
+
 1. Enable gs_usb kernel module
    
     ```
@@ -81,14 +81,12 @@ Two scripts inside the "scout_bringup/scripts" folder are provided for easy setu
 
     ```
     $ cd ~/catkin_ws/src
-    $ git clone https://github.com/agilexrobotics/scout_ros.git	
-    $ cd scout_ros && git checkout scout_v2 && cd ..
-    $ git https://github.com/agilexrobotics/agx_sdk.git
-    $ cd agx_sdk && git checkout scout_v2 && cd ..
+    $ git clone -b scout_v2 --depth 1 https://github.com/agilexrobotics/scout_ros.git	
+    $ git clone -b scout_v2 --depth 1 https://github.com/agilexrobotics/agx_sdk.git
     $ cd ..
     $ catkin_make
     ```
-
+    
 3. Setup Webots simulation    
 
 * Install Webots R2020a-rev1 (download from https://cyberbotics.com/ )
@@ -106,7 +104,7 @@ Two scripts inside the "scout_bringup/scripts" folder are provided for easy setu
     ```
 
 4. Launch ROS nodes
- 
+
 * Start the base node for the real robot
 
     ```
