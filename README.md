@@ -81,13 +81,28 @@ Two scripts inside the "scout_bringup/scripts" folder are provided for easy setu
 
     ```
     $ cd ~/catkin_ws/src
-    $ git clone https://github.com/agilexrobotics/scout_ros.git
-    $ git clone https://github.com/agilexrobotics/agx_sdk.git
+    ```
+
+    ##### Scout V1
+
+    ```
+    $ git clone --depth 1 https://github.com/agilexrobotics/scout_ros.git
+    $ git clone --depth 1 https://github.com/agilexrobotics/agx_sdk.git
+    ```
+
+    ##### Scout V2
+
+    ```
+    $ git clone -b scout_v2 --depth 1 https://github.com/agilexrobotics/scout_ros.git
+    $ git clone -b scout_v2 --depth 1 https://github.com/agilexrobotics/agx_sdk.git
+    ```
+
+    ```
     $ cd ..
     $ catkin_make
     ```
 
-3. Setup Webots simulation    
+3. Setup Webots simulation
 
 * Install Webots R2020a-rev1 (download from https://cyberbotics.com/ )
 
@@ -112,11 +127,10 @@ Two scripts inside the "scout_bringup/scripts" folder are provided for easy setu
     ```
 
     or (if you're using a serial port)
-        
     ```
     $ roslaunch scout_bringup scout_minimal_uart.launch
     ```
-
+    
 * Start the Webots-based simulation (Scout V1)
 
     ```
