@@ -42,6 +42,12 @@ target_link_libraries(scout_skid_steer_controller scout_gazebo ${catkin_LIBRARIE
 roslaunch_add_file_check(launch)
 
 install(
-  DIRECTORY launch worlds
+  DIRECTORY launch worlds config
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
+
+install(TARGETS scout_gazebo scout_skid_steer_controller
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+) 
