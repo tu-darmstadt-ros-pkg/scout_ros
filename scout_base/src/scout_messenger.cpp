@@ -28,7 +28,7 @@ void ScoutROSMessenger::SetupSubscription()
     // odometry publisher
     odom_publisher_ = nh_->advertise<nav_msgs::Odometry>(odom_frame_, 50);
     status_publisher_ = nh_->advertise<scout_msgs::ScoutStatus>("/scout_status", 10);
-
+    joint_state_publisher_ = nh_->advertise<sensor_msgs::JointState>("/joint_states", 5);
     // cmd subscriber
     motion_cmd_subscriber_ = nh_->subscribe<geometry_msgs::Twist>("/cmd_vel", 5, &ScoutROSMessenger::TwistCmdCallback, this); //不启用平滑包则订阅“cmd_vel”
     light_cmd_subscriber_ = nh_->subscribe<scout_msgs::ScoutLightCmd>("/scout_light_control", 5, &ScoutROSMessenger::LightCmdCallback, this);
@@ -180,6 +180,23 @@ void ScoutROSMessenger::PublishStateToROS()
 
     // publish odometry and tf
     PublishOdometryToROS(state.linear_velocity, state.angular_velocity, dt);
+
+    sensor_msgs::JointState joint_state_;
+    joint_state_.name.resize(4);
+    joint_state_.position.resize(4);
+    joint_state_.velocity.resize(4);
+    joint_state_.effort.resize(4);
+
+    joint_state_.name = {"front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel"};
+    joint_state_.header.stamp = current_time_;
+    for (int i = 0; i < 4; ++i)
+    {
+        joint_state_.position[i] = state.motor_H_state[i].motor_pose;
+        joint_state_.velocity[i] = state.motor_H_state[i].rpm / 377; // experimentally determined
+        joint_state_.effort[i] = state.motor_H_state[i].current;
+    }
+
+    joint_state_publisher_.publish(joint_state_);
 
     // record time for next integration
     last_time_ = current_time_;

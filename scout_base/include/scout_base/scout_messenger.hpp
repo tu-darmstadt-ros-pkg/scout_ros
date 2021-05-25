@@ -16,6 +16,7 @@
 #include <nav_msgs/Odometry.h>
 // #include <tf/transform_broadcaster.h>
 #include <tf2_ros/transform_broadcaster.h>
+#include <sensor_msgs/JointState.h>
 
 #include "scout_msgs/ScoutLightCmd.h"
 #include "wrp_sdk/platforms/scout/scout_base.hpp"
@@ -50,6 +51,7 @@ private:
 
     ros::Publisher odom_publisher_;
     ros::Publisher status_publisher_;
+    ros::Publisher joint_state_publisher_;
     ros::Subscriber motion_cmd_subscriber_;
     ros::Subscriber light_cmd_subscriber_;
     tf2_ros::TransformBroadcaster tf_broadcaster_;
