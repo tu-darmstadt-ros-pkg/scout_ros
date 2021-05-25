@@ -187,13 +187,13 @@ void ScoutROSMessenger::PublishStateToROS()
     joint_state_.velocity.resize(4);
     joint_state_.effort.resize(4);
 
-    joint_state_.name = {"front_left_wheel", "front_right_wheel", "rear_left_wheel", "rear_right_wheel"};
+    joint_state_.name = {"front_right_wheel", "rear_right_wheel", "rear_left_wheel", "front_left_wheel"};
     joint_state_.header.stamp = current_time_;
     for (int i = 0; i < 4; ++i)
     {
         joint_state_.position[i] = state.motor_H_state[i].motor_pose;
-        joint_state_.velocity[i] = state.motor_H_state[i].rpm / 377; // experimentally determined
-        joint_state_.effort[i] = state.motor_H_state[i].current;
+        joint_state_.velocity[i] = -state.motor_H_state[i].rpm / 377; // experimentally determined
+        joint_state_.effort[i] = 0.1 * state.motor_H_state[i].current;
     }
 
     joint_state_publisher_.publish(joint_state_);
