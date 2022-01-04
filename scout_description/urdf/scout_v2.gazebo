@@ -24,9 +24,10 @@ Reference:
 
     <!-- Controller configurations -->
     <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>$(arg robot_namespace)</robotNamespace>
-        </plugin>
+        <plugin name="gazebo_ros_control_select_joints" filename="libgazebo_ros_control_select_joints.so">
+          <robotNamespace>$(arg robot_namespace)</robotNamespace>
+          <joints>front_right_wheel front_left_wheel rear_left_wheel rear_right_wheel</joints>
+      </plugin>
     </gazebo>
 
     <!-- kp spring constant, kd damping constant -->
