@@ -12,7 +12,6 @@
 #include <tf/transform_broadcaster.h>
 
 #include "scout_msgs/ScoutStatus.h"
-#include "scout_messenger.hpp"
 
 namespace westonrobot
 {
