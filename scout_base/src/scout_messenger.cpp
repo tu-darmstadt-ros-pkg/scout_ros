@@ -12,6 +12,7 @@
 #include <tf/transform_broadcaster.h>
 
 #include "scout_msgs/ScoutStatus.h"
+#include "scout_messenger.hpp"
 
 namespace westonrobot
 {
@@ -32,10 +33,13 @@ void ScoutROSMessenger::SetupSubscription()
     // cmd subscriber
     motion_cmd_subscriber_ = nh_->subscribe<geometry_msgs::Twist>("/cmd_vel", 5, &ScoutROSMessenger::TwistCmdCallback, this); //不启用平滑包则订阅“cmd_vel”
     light_cmd_subscriber_ = nh_->subscribe<scout_msgs::ScoutLightCmd>("/scout_light_control", 5, &ScoutROSMessenger::LightCmdCallback, this);
+    e_stop_subscriber_ = nh_->subscribe<std_msgs::Bool>("/emergency_stop", 10, &ScoutROSMessenger::EStopCallback, this);
 }
 
 void ScoutROSMessenger::TwistCmdCallback(const geometry_msgs::Twist::ConstPtr &msg)
 {
+    std::unique_lock<std::mutex> lock(e_stop_mutex_);
+    if (e_stop_active_) return;
     if (!simulated_robot_)
     {
         scout_->SetMotionCommand(msg->linear.x, msg->angular.z);
@@ -123,6 +127,16 @@ void ScoutROSMessenger::LightCmdCallback(const scout_msgs::ScoutLightCmd::ConstP
     else
     {
         std::cout << "simulated robot received light control cmd" << std::endl;
+    }
+}
+
+void ScoutROSMessenger::EStopCallback( const std_msgs::Bool::ConstPtr &msg ) {
+    std::unique_lock<std::mutex> lock(e_stop_mutex_);
+    e_stop_active_ = msg->data;
+    if (!simulated_robot_) {
+        scout_->SetMotionCommand(0, 0);
+    } else {
+        current_twist_ = {};
     }
 }
 

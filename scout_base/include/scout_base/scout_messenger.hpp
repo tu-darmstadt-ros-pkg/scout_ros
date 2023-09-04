@@ -17,6 +17,7 @@
 // #include <tf/transform_broadcaster.h>
 #include <tf2_ros/transform_broadcaster.h>
 #include <sensor_msgs/JointState.h>
+#include <std_msgs/Bool.h>
 
 #include "scout_msgs/ScoutLightCmd.h"
 #include "wrp_sdk/platforms/scout/scout_base.hpp"
@@ -54,6 +55,7 @@ private:
     ros::Publisher joint_state_publisher_;
     ros::Subscriber motion_cmd_subscriber_;
     ros::Subscriber light_cmd_subscriber_;
+    ros::Subscriber e_stop_subscriber_;
     tf2_ros::TransformBroadcaster tf_broadcaster_;
 
     // speed variables
@@ -62,12 +64,15 @@ private:
     double position_x_ = 0.0;
     double position_y_ = 0.0;
     double theta_ = 0.0;
+    std::mutex e_stop_mutex_;
+    bool e_stop_active_;
 
     ros::Time last_time_;
     ros::Time current_time_;
 
     void TwistCmdCallback(const geometry_msgs::Twist::ConstPtr &msg);
     void LightCmdCallback(const scout_msgs::ScoutLightCmd::ConstPtr &msg);
+    void EStopCallback(const std_msgs::Bool::ConstPtr &msg);
     void PublishOdometryToROS(double linear, double angular, double dt);
 };
 } // namespace wescore
